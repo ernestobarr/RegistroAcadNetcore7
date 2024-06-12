@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Web.Models.ProfesoresCurso>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Materias disponibles y sus profesores</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCursoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProfesorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.IdCursoNavigation != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.IdCursoNavigation.NombreCurso)
+                    }
+                </td>
+                <td>
+                    @if (item.IdProfesorNavigation != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.IdProfesorNavigation.NombreProfesor)
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdProfesoresCurso">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdProfesoresCurso">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdProfesoresCurso">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

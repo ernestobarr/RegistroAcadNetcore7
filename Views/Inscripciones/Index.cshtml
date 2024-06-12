@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Web.Models.CursosInscrito>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCursoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstudianteNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @if (item.IdCursoNavigation != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.IdCursoNavigation.NombreCurso)
+                    }
+                </td>
+                <td>
+                    @if (item.IdEstudianteNavigation != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.IdEstudianteNavigation.Nombre)
+                    }
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
